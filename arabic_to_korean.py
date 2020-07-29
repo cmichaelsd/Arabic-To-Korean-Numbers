@@ -94,7 +94,7 @@ class ArabicToKorean:
 
 ArabicToKorean("3524761") # 삼백오십이만사천칠백육십일
 ArabicToKorean("0000") # 공
-ArabicToKorean("1212") # 백이십이
+ArabicToKorean("1212") # 천이백십이
 ArabicToKorean("1000") # 천
 ArabicToKorean("1") # 일
 ArabicToKorean("10") # 십
