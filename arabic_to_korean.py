@@ -36,7 +36,7 @@ class ArabicToKorean:
         }
         print(self.conversion())
 
-    def handle_counter_from_zero(self):
+    def handle_counter_from_zero(self) -> None:
         if self.counter_from_zero == 4:
             # If true, reset
             self.counter_from_zero = 1
