@@ -4,8 +4,8 @@ class ArabicToKorean:
         # counter from zero is used to tell how many
         # decimal places from the last special character
         # or 1s place
-        self.counter_from_zero = 0
-        self.s = {
+        self.__counter_from_zero = 0
+        self.__s = {
             # non-repeating special characters which change every 4
             # decimal places from last special character
             # or 1s place
@@ -37,7 +37,7 @@ class ArabicToKorean:
             }
         }
 
-        self.n = {
+        self.__n = {
             "tens": {
                 "1": "열",
                 "2": "스물",
@@ -67,6 +67,26 @@ class ArabicToKorean:
             print(self.sino_conversion())
         else:
             print(self.native_conversion())
+
+    @property
+    def counter_from_zero(self):
+        return self.__counter_from_zero
+
+    @counter_from_zero.setter
+    def counter_from_zero(self, value):
+        self.__counter_from_zero = value
+
+    @counter_from_zero.deleter
+    def counter_from_zero(self, value):
+        self.__counter_from_zero = value
+
+    @property
+    def s(self):
+        return self.__s
+
+    @property
+    def n(self):
+        return self.__n
 
     def __handle_counter_from_zero(self) -> None:
         if self.counter_from_zero == 4:
