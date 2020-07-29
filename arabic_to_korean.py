@@ -68,7 +68,7 @@ class ArabicToKorean:
         else:
             print(self.native_conversion())
 
-    def handle_counter_from_zero(self) -> None:
+    def __handle_counter_from_zero(self) -> None:
         if self.counter_from_zero == 4:
             # If true, reset
             self.counter_from_zero = 1
@@ -76,7 +76,7 @@ class ArabicToKorean:
             # Otherwise increment
             self.counter_from_zero += 1
 
-    def handle_special_character(self, special_char, c) -> str:
+    def __handle_special_character(self, special_char, c) -> str:
         if c > "1":
             # Add special character and current
             return special_char + self.s["numerals"][c]
@@ -101,7 +101,7 @@ class ArabicToKorean:
             if self.counter_from_zero > 0 and self.counter_from_zero % 4 != 0:
                 # Append character for decimal place after 0
                 postfix = self.s["decimal_places_from_zero"][self.counter_from_zero]
-                output += self.handle_special_character(postfix, c)
+                output += self.__handle_special_character(postfix, c)
 
             # 2)
             # If index is a multiple of 4
@@ -120,10 +120,10 @@ class ArabicToKorean:
                 else:
                     # Otherwise get special character for decimal place
                     special_character = self.s["special_decimal_place"][i]
-                    output += self.handle_special_character(special_character, c)
+                    output += self.__handle_special_character(special_character, c)
 
             # At the end of the logic see if the counter is currently 4
-            self.handle_counter_from_zero()
+            self.__handle_counter_from_zero()
 
         return output[::-1]
     
