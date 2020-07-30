@@ -1,3 +1,5 @@
+from typing import Any
+
 class ArabicToKorean:
     def __init__(self, value, sino = True):
         self.value = value
@@ -64,28 +66,28 @@ class ArabicToKorean:
         }
 
         if sino:
-            print(self.sino_conversion())
+            print(self.__sino_conversion())
         else:
-            print(self.native_conversion())
+            print(self.__native_conversion())
 
     @property
-    def counter_from_zero(self):
+    def counter_from_zero(self) -> int:
         return self.__counter_from_zero
 
     @counter_from_zero.setter
-    def counter_from_zero(self, value):
+    def counter_from_zero(self, value) -> None:
         self.__counter_from_zero = value
 
     @counter_from_zero.deleter
-    def counter_from_zero(self, value):
+    def counter_from_zero(self, value) -> None:
         self.__counter_from_zero = value
 
     @property
-    def s(self):
+    def s(self) -> Any:
         return self.__s
 
     @property
-    def n(self):
+    def n(self) -> Any:
         return self.__n
 
     def __handle_counter_from_zero(self) -> None:
@@ -107,7 +109,7 @@ class ArabicToKorean:
             # If zero return blank
             return ""
 
-    def sino_conversion(self) -> str:
+    def __sino_conversion(self) -> str:
         # Number must be less than 999,999,999,999
         if int(self.value) > 999999999999:
             print("Error: Sino-Korean number must be less than 999,999,999,999.")
@@ -147,7 +149,7 @@ class ArabicToKorean:
 
         return output[::-1]
     
-    def native_conversion(self) -> str:
+    def __native_conversion(self) -> str:
         # Number must be less than 99
         if int(self.value) > 99:
             print("Error: Native Korean number must be less than 99.")
