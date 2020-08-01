@@ -1,7 +1,15 @@
 from typing import Any
 
 class ArabicToKorean:
-    def __init__(self, value, sino = True):
+    def __new__(cls, value, sino = True):
+        instance = super(ArabicToKorean, cls).__new__(cls)
+        instance.__init__(value, sino)
+        if sino:
+            return instance.__sino_conversion()
+        else:
+            return instance.__native_conversion()
+
+    def __init__(self, value, sino) -> None:
         self.value = value
         # counter from zero is used to tell how many
         # decimal places from the last special character
@@ -64,11 +72,6 @@ class ArabicToKorean:
                 "9": "아홉"
             }
         }
-
-        if sino:
-            print(self.__sino_conversion())
-        else:
-            print(self.__native_conversion())
 
     @property
     def counter_from_zero(self) -> int:
@@ -154,6 +157,9 @@ class ArabicToKorean:
         if int(self.value) > 99:
             print("Error: Native Korean number must be less than 99.")
             return "$"
+        elif int(self.value) == 0:
+            print("Error: Native Korean number must be greater than 0.")
+            return "$"
         output = []
         for i, c in enumerate(self.value[::-1]):
             if i == 0:
@@ -163,20 +169,3 @@ class ArabicToKorean:
                 
 
         return "".join(output[::-1])
-
-
-
-### Sino-Korean Tests ###
-ArabicToKorean("3524761") # 삼백오십이만사천칠백육십일
-ArabicToKorean("0000") # 공
-ArabicToKorean("1212") # 천이백십이
-ArabicToKorean("1000") # 천
-ArabicToKorean("1") # 일
-ArabicToKorean("10") # 십
-ArabicToKorean("50") # 오십
-ArabicToKorean("999999999999") # 구천구백구십구억구천구백구십구만구천구백구십구
-
-### Native Korean Tests ###
-ArabicToKorean("1", False) # 하나
-ArabicToKorean("10", False) # 열
-ArabicToKorean("55", False) # 쉰다섯
