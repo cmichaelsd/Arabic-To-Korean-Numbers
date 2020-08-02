@@ -2,7 +2,7 @@ from arabic_to_korean import ArabicToKorean
 from typing import Any
 
 class Expect:
-    def __init__(self, result):
+    def __init__(self, result) -> None:
         self.__result = result
     
     @property

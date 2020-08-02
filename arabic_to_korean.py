@@ -1,7 +1,7 @@
 from typing import Any
 
 class ArabicToKorean:
-    def __new__(cls, value, sino = True):
+    def __new__(cls, value, sino = True) -> str:
         instance = super(ArabicToKorean, cls).__new__(cls)
         instance.__init__(value, sino)
         if sino:
