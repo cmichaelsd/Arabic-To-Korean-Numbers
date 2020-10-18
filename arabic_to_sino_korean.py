@@ -1,13 +1,4 @@
-def remove_decimal_place(value, decimal_place):
-    decimal_place *= 10
-    difference = value - (value % decimal_place)
-    result = difference / decimal_place
-    return int(result)
-
-def get_decimal_place(value, decimal_place):
-    decimal_place *= 10
-    return value % decimal_place
-
+from helpers import *
 
 def arabic_to_sino_korean(value):
     if value > 999999999999:
