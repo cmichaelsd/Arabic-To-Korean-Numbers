@@ -1,7 +1,7 @@
 from helpers import *
 
 def arabic_to_sino_korean(value):
-    if value > 999999999999:
+    if value > 999999999999 or value < 0:
         print("Error: Sino-Korean number must be less than 999,999,999,999.")
         return
 
