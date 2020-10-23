@@ -1,9 +1,7 @@
-def remove_decimal_place(value, decimal_place):
-    decimal_place *= 10
-    difference = value - (value % decimal_place)
-    result = difference / decimal_place
+def remove_decimal_place(value, tensPower):
+    difference = value - get_decimal_place(value, tensPower)
+    result = difference / (10 ** tensPower)
     return int(result)
 
-def get_decimal_place(value, decimal_place):
-    decimal_place *= 10
-    return value % decimal_place
+def get_decimal_place(value, tensPower):
+    return value % (10 ** tensPower)
